@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-content>
+    <span class="main-text">List:</span>
+
+    <div [formGroup]="todoForm">
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          formControlName="todo"
+          placeholder="Write text here"
+          class="textareafull"
+          name="inputValue"
+        />
+      </mat-form-field>
+      <span class="example-spacer"></span>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="todoForm.invalid"
+        (click)="addItem()"
+        class="button-add"
+      >
+        Add
+      </button>
+    </div>
+
+    <mat-list *ngFor="let todo of todos | async; let i = index" color="primary">
+      <ul class="item">
+        <li class="item_flex">
+          <span class="valueTodo">{{ todo.value }}</span>
+        </li>
+        <li class="item_flex">
+          <button
+            mat-stroked-button
+            class="button-delete"
+            color="warn"
+            (click)="deleteItem(todo.id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

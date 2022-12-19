@@ -1,0 +1,39 @@
+.random-btn {
+  width: 50vw;
+}
+
+.score {
+  font-weight: 700;
+  justify-content: center;
+  align-self: center;
+  padding: 0 1rem;
+  content: ' ';
+  place-self: center;
+  align-items: center;
+}
+
+.mat-mdc-card {
+  display: flex;
+  flex-flow: row;
+}
+
+.mat-mdc-card-content {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+}
+.positive {
+  color: green;
+  place-self: center;
+}
+.positive::after {
+  content: 'Generate lower number';
+}
+.negative {
+  color: red;
+  place-self: center;
+}
+.negative::after {
+  content: 'Generate uppper number';
+}
