@@ -5,8 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { ListComponent } from './components/list/list.component';
-import { RandomComponent } from './components/random/random.component';
-import { RandomService } from './services/random.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListService } from './services/list.service';
 import { MatCardModule } from '@angular/material/card';
@@ -38,8 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
   ],
   exports: [MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule],
-  declarations: [AppComponent, HelloComponent, ListComponent, RandomComponent],
+  declarations: [AppComponent, HelloComponent, ListComponent],
   bootstrap: [AppComponent],
-  providers: [RandomService, ListService],
+  providers: [ListService],
 })
 export class AppModule {}
