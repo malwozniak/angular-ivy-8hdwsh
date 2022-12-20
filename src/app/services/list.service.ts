@@ -20,6 +20,10 @@ export class ListService {
     this.data.todos.push(todo);
     this.todoslist.next(Object.assign({}, this.data).todos);
   }
+
+  sendToArchive(todoId:number){
+    
+  }
 updateList(index, checked){
   let completedTask = this.data.todos.splice(index,1)[0];
   completedTask.completed = checked;

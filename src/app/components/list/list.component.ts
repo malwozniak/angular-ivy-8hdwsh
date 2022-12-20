@@ -29,6 +29,7 @@ export class ListComponent implements OnInit {
     this.todoForm.reset();
   }
   archive(todoId:number){
+    this.service.sendToArchive(todoId);
 
   }
   completeTask(event: any, index) {
