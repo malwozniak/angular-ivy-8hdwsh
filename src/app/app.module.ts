@@ -19,11 +19,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule,
     MatCardModule,
     ReactiveFormsModule,
     MatListModule,
