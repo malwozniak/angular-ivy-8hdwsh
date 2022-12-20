@@ -28,6 +28,9 @@ export class ListComponent implements OnInit {
     });
     this.todoForm.reset();
   }
+  archive(todoId:number){
+
+  }
   completeTask(event: any, index) {
     this.service.updateList(index, event.checked);
   }

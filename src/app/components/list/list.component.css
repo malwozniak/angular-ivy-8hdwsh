@@ -7,6 +7,11 @@
   background-color: rgba(163, 0, 0, 0.774) !important;
   justify-content: flex-end;
 }
+.button-archive {
+  color: #f0fff3 !important;
+  background-color: rgba(0, 163, 136, 0.774) !important;
+  justify-content: flex-end;
+}
 .mat-mdc-card-content > :last-child:not(.mat-mdc-card-footer) {
   border-bottom: 2px solid #2826bbab;
 }

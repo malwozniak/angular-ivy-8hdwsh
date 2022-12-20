@@ -34,6 +34,15 @@
         <li class="item_flex">
           <button
             mat-stroked-button
+            class="button-archive"
+            (click)="archive(todo.id)"
+          >
+            <mat-icon>archive</mat-icon>
+          </button>
+        </li>
+        <li class="item_flex">
+          <button
+            mat-stroked-button
             class="button-delete"
             color="warn"
             (click)="deleteItem(todo.id)"
