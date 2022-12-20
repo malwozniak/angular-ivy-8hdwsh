@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { ListComponent } from './components/list/list.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListService } from './services/list.service';
@@ -49,7 +48,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatListModule,
   ],
-  declarations: [AppComponent, HelloComponent, ListComponent, ArchiveComponent],
+  declarations: [AppComponent, ListComponent, ArchiveComponent],
   bootstrap: [AppComponent],
   providers: [ListService],
 })

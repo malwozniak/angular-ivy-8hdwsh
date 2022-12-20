@@ -1,4 +1,11 @@
-<hello mojePole="{{ mojePole }}"></hello>
-<router-outlet></router-outlet>
-<button mat-raised-button color="primary" routerLink="/list">Tasks</button>
-<button mat-raised-button color="warn" routerLink="/archive">Archives</button>
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space"> Task Manager</span>
+</mat-toolbar>
+
+<div class="app-container">
+  <router-outlet></router-outlet>
+  <button mat-raised-button routerLink="/list" color="secondary">Tasks</button>
+  <button mat-raised-button routerLink="/archive" color="secondary">
+    Archive
+  </button>
+</div>
