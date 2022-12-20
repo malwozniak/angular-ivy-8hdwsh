@@ -40,6 +40,7 @@ import { RouterModule } from '@angular/router';
     MatChipsModule,
     MatToolbarModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot([]),
   ],
   exports: [
     MatCardModule,

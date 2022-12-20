@@ -3,13 +3,16 @@
     <span class="main-text">List:</span>
 
     <div [formGroup]="todoForm">
-    <mat-form-field appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
       <mat-form-field class="full-width">
         <input
           matInput
@@ -31,25 +34,24 @@
       </button>
     </div>
     <mat-list *ngFor="let todo of todos | async; let i = index" color="primary">
-     
       <ul class="item">
         <li class="item_flex">
           <span [ngClass]="{ completed: todo.completed }" class="valueTodo">{{
             todo.value
           }}</span>
         </li>
-       <li class="Item_flex">
-       <input type="checkbox" (change)="completeTask($event.target, i)" />
-       </li>
+        <li class="Item_flex">
+          <input type="checkbox" (change)="completeTask($event.target, i)" />
+        </li>
       </ul>
       <button
-      mat-stroked-button
-      class="button-archive"
-      (click)="archive(todo.id)"
-    >
-      <mat-icon>archive</mat-icon>
-    </button>
+        mat-stroked-button
+        class="button-archive"
+        (click)="archive(todo.id)"
+      >
+        Archive
+        <mat-icon>archive</mat-icon>
+      </button>
     </mat-list>
   </mat-card-content>
-  
 </mat-card>
