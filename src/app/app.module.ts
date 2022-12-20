@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { ListComponent } from './components/list/list.component';
@@ -28,6 +28,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
     MatListModule,
     MatButtonModule,
     MatInputModule,
+    MatDatepickerModule,
     MatExpansionModule,
     MatIconModule,
     MatSnackBarModule,
