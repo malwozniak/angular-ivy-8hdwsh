@@ -35,7 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatToolbarModule,
     BrowserAnimationsModule,
   ],
-  exports: [MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule],
+  exports: [MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule, MatListModule],
   declarations: [AppComponent, HelloComponent, ListComponent],
   bootstrap: [AppComponent],
   providers: [ListService],

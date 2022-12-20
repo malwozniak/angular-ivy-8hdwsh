@@ -11,7 +11,8 @@ import { Todo } from '../../interface/todo';
 export class ListComponent implements OnInit {
   todoForm: FormGroup;
   todos: Observable<Todo[]>;
-
+  selected: any;
+  selectedList: any = [];
   constructor(private service: ListService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -27,7 +28,9 @@ export class ListComponent implements OnInit {
     });
     this.todoForm.reset();
   }
-
+  completeTask(event: any, index) {
+    this.service.updateList(index, event.checked);
+  }
   deleteItem(todoId: number) {
     this.service.delete(todoId);
   }

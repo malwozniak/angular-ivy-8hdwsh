@@ -23,11 +23,13 @@
         Add
       </button>
     </div>
-
     <mat-list *ngFor="let todo of todos | async; let i = index" color="primary">
+      <input type="checkbox" (change)="completeTask($event.target, i)" />
       <ul class="item">
         <li class="item_flex">
-          <span class="valueTodo">{{ todo.value }}</span>
+          <span [ngClass]="{ completed: todo.completed }" class="valueTodo">{{
+            todo.value
+          }}</span>
         </li>
         <li class="item_flex">
           <button
