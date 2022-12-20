@@ -1,24 +1,15 @@
 <mat-card>
   <mat-card-content>
-    <span class="main-text">List:</span>
+    <span class="main-text">Archive:</span>
 
     <mat-list *ngFor="let todo of todos | async; let i = index" color="primary">
-      <input type="checkbox" (change)="completeTask($event.target, i)" />
       <ul class="item">
         <li class="item_flex">
-          <span [ngClass]="{ completed: todo.completed }" class="valueTodo">{{
+          <span class="valueTodo">{{
             todo.value
           }}</span>
         </li>
-        <li class="item_flex">
-          <button
-            mat-stroked-button
-            class="button-archive"
-            (click)="archive(todo.id)"
-          >
-            <mat-icon>archive</mat-icon>
-          </button>
-        </li>
+        
         <li class="item_flex">
           <button
             mat-stroked-button

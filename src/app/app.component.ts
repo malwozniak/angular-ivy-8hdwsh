@@ -5,5 +5,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  @Input() mojePole: string = 'Moja appka w Angular';
+  @Input() mojePole: string = 'Witaj w Archiwum';
 }

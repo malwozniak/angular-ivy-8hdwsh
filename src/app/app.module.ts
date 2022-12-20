@@ -17,6 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ArchiveComponent } from './components/archive/archive.component';
 
 @NgModule({
   imports: [
@@ -35,8 +36,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatToolbarModule,
     BrowserAnimationsModule,
   ],
-  exports: [MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule, MatListModule],
-  declarations: [AppComponent, HelloComponent, ListComponent],
+  exports: [
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+  ],
+  declarations: [AppComponent, HelloComponent, ListComponent, ArchiveComponent],
   bootstrap: [AppComponent],
   providers: [ListService],
 })
