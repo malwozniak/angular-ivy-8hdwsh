@@ -31,33 +31,25 @@
       </button>
     </div>
     <mat-list *ngFor="let todo of todos | async; let i = index" color="primary">
-      <input type="checkbox" (change)="completeTask($event.target, i)" />
+     
       <ul class="item">
         <li class="item_flex">
           <span [ngClass]="{ completed: todo.completed }" class="valueTodo">{{
             todo.value
           }}</span>
         </li>
-        <li class="item_flex">
-          <button
-            mat-stroked-button
-            class="button-archive"
-            (click)="archive(todo.id)"
-          >
-            <mat-icon>archive</mat-icon>
-          </button>
-        </li>
-        <li class="item_flex">
-          <button
-            mat-stroked-button
-            class="button-delete"
-            color="warn"
-            (click)="deleteItem(todo.id)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </li>
+       <li class="Item_flex">
+       <input type="checkbox" (change)="completeTask($event.target, i)" />
+       </li>
       </ul>
+      <button
+      mat-stroked-button
+      class="button-archive"
+      (click)="archive(todo.id)"
+    >
+      <mat-icon>archive</mat-icon>
+    </button>
     </mat-list>
   </mat-card-content>
+  
 </mat-card>

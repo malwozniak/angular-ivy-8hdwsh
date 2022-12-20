@@ -18,6 +18,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
     MatExpansionModule,
     MatIconModule,
     MatSnackBarModule,
+    MatMomentDateModule,
     MatSlideToggleModule,
     MatChipsModule,
     MatToolbarModule,

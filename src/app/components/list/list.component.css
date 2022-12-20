@@ -31,4 +31,10 @@ ul {
 }
 .item_flex {
   display: flex !important;
+  list-style: none !important;
+}
+
+li.item_flex::marker {
+  display: none;
+  list-style-type: none !important;
 }
