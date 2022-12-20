@@ -5,9 +5,9 @@ import { ListComponent } from './components/list/list.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 
 const routes: Routes = [
-  { path: '/list', component: ListComponent },
-  { path: '/archive', component: ArchiveComponent },
-  { path: '', redirectTo: 'list' },
+  { path: 'list', component: ListComponent },
+  { path: 'archive', component: ArchiveComponent },
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
   // w przeciwnym wypadku powrót do home
   { path: '**', component: NotFoundComponent },
 ];

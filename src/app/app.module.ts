@@ -24,7 +24,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule,
     MatCardModule,
     ReactiveFormsModule,
     MatListModule,
