@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
   }
 
   onDate(event: MatDatepickerInputEvent<Date>) {
-   
+   console.log('event', event.value)
     const stringified = JSON.stringify(event.value);
     const dob = stringified.substring(1, 11);
     this.events.push(`${dob}`);
