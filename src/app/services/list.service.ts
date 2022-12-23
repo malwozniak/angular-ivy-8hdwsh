@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Todo } from '../interface/todo';
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root' // just before your class
+})
 export class ListService {
   private todoslist = new BehaviorSubject<Todo[]>([]);
   private data: {
