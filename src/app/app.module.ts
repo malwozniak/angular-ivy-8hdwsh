@@ -11,6 +11,7 @@ import { ListComponent } from './components/list/list.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,6 +23,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
     AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
