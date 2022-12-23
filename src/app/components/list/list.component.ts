@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListService } from '../../services/list.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Todo } from '../../interface/todo';
+import { Task } from '../../interface/task';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -10,32 +10,31 @@ import { Todo } from '../../interface/todo';
 })
 export class ListComponent implements OnInit {
   todoForm: FormGroup;
-  todos: Observable<Todo[]>;
+  tasks: Observable<Task[]>;
   selected: any;
   selectedList: any = [];
   constructor(private service: ListService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
-      todo: ['', Validators.required],
+      task: ['', Validators.required],
     });
-    this.todos = this.service.todos;
+    this.tasks = this.service.tasks;
   }
   addItem() {
     this.service.create({
-      value: this.todoForm.controls.todo.value,
+      title: this.todoForm.controls.task.value,
       completed: false,
     });
     this.todoForm.reset();
   }
-  archive(todoId:number){
-    this.service.sendToArchive(todoId);
-
+  archive(taskId: number) {
+    this.service.sendToArchive(taskId);
   }
   completeTask(event: any, index) {
     this.service.updateList(index, event.checked);
   }
-  deleteItem(todoId: number) {
-    this.service.delete(todoId);
+  deleteItem(taskId: number) {
+    this.service.delete(taskId);
   }
 }

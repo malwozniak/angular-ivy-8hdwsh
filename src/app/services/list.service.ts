@@ -1,50 +1,47 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Todo } from '../interface/todo';
-
+import { Task } from '../interface/task';
 
 @Injectable({
-  providedIn: 'root' // just before your class
+  providedIn: 'root',
 })
 export class ListService {
-  private todoslist = new BehaviorSubject<Todo[]>([]);
+  private taskslist = new BehaviorSubject<Task[]>([]);
   private data: {
-    todos: Todo[];
+    tasks: Task[];
   } = {
-    todos: [],
+    tasks: [],
   };
-  readonly todos = this.todoslist.asObservable();
+  readonly tasks = this.taskslist.asObservable();
   private itemId = 0;
   constructor() {}
 
-  create(todo: Todo) {
+  create(task: Task) {
     this.itemId = this.itemId + 1;
-    todo.id = this.itemId;
-    this.data.todos.push(todo);
-    this.todoslist.next(Object.assign({}, this.data).todos);
+    task.id = this.itemId;
+    this.data.tasks.push(task);
+    this.taskslist.next(Object.assign({}, this.data).tasks);
   }
 
-  sendToArchive(todoId:number){
-    
+  sendToArchive(todoId: number) {}
+  updateList(index, checked) {
+    let completedTask = this.data.tasks.splice(index, 1)[0];
+    completedTask.completed = checked;
+    if (!completedTask.completed) {
+      this.data.tasks.push(completedTask);
+    } else {
+      this.data.tasks.unshift(completedTask);
+    }
+    this.taskslist.next(Object.assign({}, this.data.tasks));
   }
-updateList(index, checked){
-  let completedTask = this.data.todos.splice(index,1)[0];
-  completedTask.completed = checked;
-if(!completedTask.completed){
-  this.data.todos.push(completedTask);
-}
-else{
-  this.data.todos.unshift(completedTask);
-}
-this.todoslist.next(Object.assign({}, this.data.todos))
-}
+
   delete(todoId: number) {
-    this.data.todos.forEach((t, i) => {
+    this.data.tasks.forEach((t, i) => {
       if (t.id === todoId) {
-        this.data.todos.splice(i, 1);
+        this.data.tasks.splice(i, 1);
       }
     });
 
-    this.todoslist.next(Object.assign({}, this.data).todos);
+    this.taskslist.next(Object.assign({}, this.data).tasks);
   }
 }

@@ -1,7 +1,3 @@
-<a mat-raised-button [routerLink]="['/list']" color="secondary">Tasks</a>
-<button mat-raised-button routerLink="/archive" color="secondary">
-  Archive
-</button>
 <mat-card>
   <mat-card-content>
     <span class="main-text">List:</span>
@@ -37,11 +33,11 @@
         Add
       </button>
     </div>
-    <mat-list *ngFor="let todo of todos | async; let i = index" color="primary">
+    <mat-list *ngFor="let task of tasks | async; let i = index" color="primary">
       <ul class="item">
         <li class="item_flex">
-          <span [ngClass]="{ completed: todo.completed }" class="valueTodo">{{
-            todo.value
+          <span [ngClass]="{ completed: task.completed }" class="valueTodo">{{
+            task.title
           }}</span>
         </li>
         <li class="Item_flex">
@@ -51,7 +47,7 @@
       <button
         mat-stroked-button
         class="button-archive"
-        (click)="archive(todo.id)"
+        (click)="archive(task.id)"
       >
         Archive
         <mat-icon>archive</mat-icon>
