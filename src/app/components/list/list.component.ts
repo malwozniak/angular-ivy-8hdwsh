@@ -3,6 +3,7 @@ import { ListService } from '../../services/list.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Task } from '../../interface/task';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -13,6 +14,7 @@ export class ListComponent implements OnInit {
   tasks: Observable<Task[]>;
   selected: any;
   selectedList: any = [];
+  events: string[] = [];
   constructor(private service: ListService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -26,7 +28,12 @@ export class ListComponent implements OnInit {
       title: this.todoForm.controls.task.value,
       completed: false,
     });
+
     this.todoForm.reset();
+  }
+
+  onDate(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.events.push(`${type}: ${event.value}`);
   }
   archive(taskId: number) {
     this.service.sendToArchive(taskId);

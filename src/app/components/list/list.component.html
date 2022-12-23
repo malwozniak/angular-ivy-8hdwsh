@@ -5,7 +5,11 @@
     <div [formGroup]="todoForm">
       <mat-form-field appearance="fill">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" />
+        <input
+          matInput
+          [matDatepicker]="picker"
+          (dateChange)="onDate('Date', $event)"
+        />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
@@ -16,7 +20,7 @@
       <mat-form-field class="full-width">
         <input
           matInput
-          formControlName="todo"
+          formControlName="task"
           placeholder="Write text here"
           class="textareafull"
           name="inputValue"
@@ -34,11 +38,12 @@
       </button>
     </div>
     <mat-list *ngFor="let task of tasks | async; let i = index" color="primary">
-      <ul class="item">
+      <ul class="item" >
         <li class="item_flex">
           <span [ngClass]="{ completed: task.completed }" class="valueTodo">{{
             task.title
           }}</span>
+     
         </li>
         <li class="Item_flex">
           <input type="checkbox" (change)="completeTask($event.target, i)" />

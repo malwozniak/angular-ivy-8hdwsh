@@ -2,11 +2,11 @@
   <mat-card-content>
     <span class="main-text">Archive:</span>
 
-    <mat-list *ngFor="let todo of todos | async; let i = index" color="primary">
+    <mat-list *ngFor="let task of tasks | async; let i = index" color="primary">
       <ul class="item">
         <li class="item_flex">
           <span class="valueTodo">{{
-            todo.value
+            task.title
           }}</span>
         </li>
         
@@ -15,7 +15,7 @@
             mat-stroked-button
             class="button-delete"
             color="warn"
-            (click)="deleteItem(todo.id)"
+            (click)="deleteItem(task.id)"
           >
             <mat-icon>delete</mat-icon>
           </button>

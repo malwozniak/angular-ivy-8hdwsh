@@ -1,11 +1,5 @@
 export interface Task {
   id?: number;
-  title?: string;
-  description?: string;
-  deadline?: Date;
+  title: string;
   completed?: boolean;
-  archived?: boolean;
-  created?: Date;
-  updated?: Date;
 }
- 

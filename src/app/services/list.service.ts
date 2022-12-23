@@ -23,7 +23,7 @@ export class ListService {
     this.taskslist.next(Object.assign({}, this.data).tasks);
   }
 
-  sendToArchive(todoId: number) {}
+  sendToArchive(taskId: number) {}
   updateList(index, checked) {
     let completedTask = this.data.tasks.splice(index, 1)[0];
     completedTask.completed = checked;
@@ -34,10 +34,9 @@ export class ListService {
     }
     this.taskslist.next(Object.assign({}, this.data.tasks));
   }
-
-  delete(todoId: number) {
+  delete(taskId: number) {
     this.data.tasks.forEach((t, i) => {
-      if (t.id === todoId) {
+      if (t.id === taskId) {
         this.data.tasks.splice(i, 1);
       }
     });
