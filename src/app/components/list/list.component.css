@@ -20,10 +20,10 @@
   border-bottom: 2px dotted #2826bbab;
 }
 
-ul {
+.item {
   display: inline-flex;
   justify-content: space-between;
-  width: 70vw;
+  width: 100%;
   align-items: center;
 }
 .mat-mdc-list-item .mdc-list-item__primary-text {

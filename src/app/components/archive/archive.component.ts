@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from '../../interface/task';
 import { ListService } from '../../services/list.service';
@@ -11,7 +11,7 @@ import { ListService } from '../../services/list.service';
 export class ArchiveComponent implements OnInit {
   constructor(private service: ListService) {}
   tasks: Observable<Task[]>;
-
+@Input() taska: any[];
   ngOnInit() {}
   deleteItem(todoId: number) {
     this.service.delete(todoId);

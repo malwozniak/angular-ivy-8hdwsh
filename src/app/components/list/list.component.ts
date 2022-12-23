@@ -32,14 +32,21 @@ export class ListComponent implements OnInit {
     this.todoForm.reset();
   }
 
-  onDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.events.push(`${type}: ${event.value}`);
+  onDate(event: MatDatepickerInputEvent<Date>) {
+   
+    const stringified = JSON.stringify(event.value);
+    const dob = stringified.substring(1, 11);
+    this.events.push(`${dob}`);
   }
   archive(taskId: number) {
     this.service.sendToArchive(taskId);
   }
   completeTask(event: any, index) {
-    this.service.updateList(index, event.checked);
+    if (event.target.checked) {
+      this.service.updateList(index, event.checked);
+    } else {
+      console.log('unchecked');
+    }
   }
   deleteItem(taskId: number) {
     this.service.delete(taskId);

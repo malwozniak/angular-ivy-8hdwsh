@@ -8,9 +8,9 @@
         <input
           matInput
           [matDatepicker]="picker"
-          (dateChange)="onDate('Date', $event)"
+          (dateChange)="onDate($event)"
         />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
@@ -38,16 +38,21 @@
       </button>
     </div>
     <mat-list *ngFor="let task of tasks | async; let i = index" color="primary">
-      <ul class="item">
-        <li class="item_flex">
+     
+      <mat-list role="list" class="item" *ngFor="let e of events">
+        <mat-list-item class="item_flex">
           <span [ngClass]="{ completed: task.completed }" class="valueTodo">{{
             task.title
           }}</span>
-        </li>
-        <li class="Item_flex">
+        </mat-list-item>
+          <mat-list-item>
+          {{ e }}
+          </mat-list-item>
+      
+        <mat-list-item class="Item_flex">
           <input type="checkbox" (change)="completeTask($event.target, i)" />
-        </li>
-      </ul>
+        </mat-list-item>
+      </mat-list>
       <button
         mat-stroked-button
         class="button-archive"

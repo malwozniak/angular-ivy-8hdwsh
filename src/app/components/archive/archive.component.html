@@ -5,11 +5,9 @@
     <mat-list *ngFor="let task of tasks | async; let i = index" color="primary">
       <ul class="item">
         <li class="item_flex">
-          <span class="valueTodo">{{
-            task.title
-          }}</span>
+          <span class="valueTodo">{{ task.title }}</span>
         </li>
-        
+
         <li class="item_flex">
           <button
             mat-stroked-button
