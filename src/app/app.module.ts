@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,
@@ -31,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
     ListComponent,
   ],
+
   // providers: [LocalStorageRefService],
 
   bootstrap: [AppComponent],

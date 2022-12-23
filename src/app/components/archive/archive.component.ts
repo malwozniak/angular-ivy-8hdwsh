@@ -7,7 +7,8 @@ import { ListService } from '../../services/list.service';
   selector: 'app-archive',
   templateUrl: './archive.component.html',
   styleUrls: ['./archive.component.css'],
-})
+}
+)
 export class ArchiveComponent implements OnInit {
   constructor(private service: ListService) {}
   tasks: Observable<Task[]>;
