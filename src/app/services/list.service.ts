@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from '../interface/task';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class ListService {
   };
   readonly tasks = this.taskslist.asObservable();
   private itemId = 0;
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   create(task: Task) {
     this.itemId = this.itemId + 1;
@@ -24,10 +25,30 @@ export class ListService {
     console.log(task)
   }
 
-  sendToArchive(taskId: number) {
+
+// public get(archived = false): Observable<Task[]> { 
+
+//   return this.http.get<Task>('https://lab13.zecer.wi.zut.edu.pl/api/', archived);
+//  }
+
+public post(task: Task): Observable<any> { 
+   task.archived = true;
+  return this.http.post('https://lab13.zecer.wi.zut.edu.pl/api/', task);
 
 
+ }
+
+public put(task: Task): Observable<any> {
+  task.archived = true;
+  return this.http.put('https://lab13.zecer.wi.zut.edu.pl/api/', task)
+ }
+
+
+public deleteTask(task: Task): Observable<any> {  
+
+    return this.http.delete('https://lab13.zecer.wi.zut.edu.pl/api/')
   }
+
   updateList(index, checked) {
     let completedTask = this.data.tasks.splice(index, 1)[0];
     completedTask.completed = checked;
@@ -50,3 +71,4 @@ export class ListService {
     this.taskslist.next(Object.assign({}, this.data).tasks);
   }
 }
+
