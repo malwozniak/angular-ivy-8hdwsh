@@ -11,12 +11,12 @@ import { ListService } from '../../services/list.service';
 export class ArchiveComponent implements OnInit {
   constructor(private service: ListService) {}
   tasks: Observable<Task[]>;
+
   public results;
   @Input() taska: any[];
-  ngOnInit() {}
-  getItem(taskId) {
+  ngOnInit() {
     this.service.get().subscribe(
-      (response) => (this.results = response),
+      (response: any) => (this.results = response),
       (error) => console.log(error)
     );
   }

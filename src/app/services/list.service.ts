@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from '../interface/task';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { ListComponent } from '../components/list/list.component';
 
 @Injectable({
   providedIn: 'root',

@@ -36,8 +36,9 @@ export class ListComponent implements OnInit {
   isChecked(e: MatCheckboxChange) {
     if (e.checked) {
       this.selected = true;
-      this.service.put(this.task).subscribe((data) => {
+      this.service.put(this.task.id).subscribe((data) => {
         this.task.completed = this.selected;
+        console.log(this.task.completed);
         this.task = data;
       });
     } else {
