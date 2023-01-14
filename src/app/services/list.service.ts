@@ -17,7 +17,7 @@ export class ListService {
   private itemId = 0;
   isLoaded: any;
 
-  readonly ROOT_URL = 'https://lab13.zecer.wi.zut.edu.pl/api/';
+  readonly ROOT_URL = 'https://lab13.zecer.wi.zut.edu.pl/api/wm32863';
 
   posts;
 

@@ -30,13 +30,11 @@ export class ListComponent implements OnInit {
       completed: false,
       archived: false,
     });
-    this.service.get(true).subscribe((data: Task[]) => {
-      this.task[1] = data;
-    });
+
     //this.todoForm.reset();
   }
-  isChecked() {
-    this.task.completed = true;
+  isChecked(e) {
+    this.task.completed = e.target.checked;
   }
   onDate(event: MatDatepickerInputEvent<Date>) {
     console.log('event', event.value);
@@ -48,6 +46,9 @@ export class ListComponent implements OnInit {
   completeTask(event: any, archived) {
     if (event.target.checked) {
       archived = true;
+      this.service.post(this.task).subscribe((data) => {
+        this.task = data;
+      });
     } else {
       console.log('unchecked');
     }
