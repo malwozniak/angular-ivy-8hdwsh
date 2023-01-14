@@ -2,10 +2,23 @@
   <span class="fill-remaining-space"> Task Manager</span>
 </mat-toolbar>
 
-<div class="app-container">
-  <button mat-raised-button routerLink="/list" color="secondary">Tasks</button>
-  <button mat-raised-button routerLink="/archive" color="secondary">
+<nav class="app-container">
+  <a
+    mat-raised-button
+    [ngClass]="{ active: activeTab === 'list' }"
+    [routerLink]="['/list']"
+    routerLinkActive="active"
+    color="secondary"
+    >Tasks</a
+  >
+  <a
+    mat-raised-button
+    [ngClass]="{ active: activeTab === 'archive' }"
+    [routerLink]="['/archive']"
+    routerLinkActive="active"
+    color="secondary"
+  >
     Archive
-  </button>
-  <router-outlet></router-outlet>
-</div>
+  </a>
+</nav>
+<router-outlet></router-outlet>
