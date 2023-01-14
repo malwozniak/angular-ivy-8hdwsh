@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  onSelectTab(newTab: string): void {
+  activeUrl(newTab: string): void {
     this.activeTab = newTab;
     this.router.navigate([newTab]);
   }
