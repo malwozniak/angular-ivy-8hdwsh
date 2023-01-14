@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
   todoForm: FormGroup;
   tasks: Observable<Task[]>;
   task: Task;
-  selected: false;
+  selected: boolean = false;
   selectedList: any = [];
   events: string[] = [];
   constructor(private service: ListService, private formBuilder: FormBuilder) {}
@@ -28,17 +28,17 @@ export class ListComponent implements OnInit {
   addItem() {
     this.service.create({
       title: this.todoForm.controls.task.value,
-      completed: false,
       archived: false,
     });
-   
 
     //this.todoForm.reset();
   }
   isChecked(e: MatCheckboxChange) {
     if (e.checked) {
-      this.service.get().subscribe((data) => {
-        // this.task = data;
+      this.selected = true;
+      this.service.put(this.task).subscribe((data) => {
+        this.task.completed = this.selected;
+        this.task = data;
       });
     } else {
       console.log(Error);

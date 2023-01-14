@@ -37,7 +37,7 @@ export class ListService {
     return this.http.get<Task[]>(this.ROOT_URL);
   }
 
-  public post(task) {
+  public post(task): Observable<any> {
     return this.http.post(this.ROOT_URL, task);
   }
 
