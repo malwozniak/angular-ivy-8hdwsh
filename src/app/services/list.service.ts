@@ -13,13 +13,10 @@ export class ListService {
   } = {
     tasks: [],
   };
-  readonly tasks = this.taskslist.asObservable();
+  tasks = this.taskslist.asObservable();
   private itemId = 0;
-  isLoaded: any;
 
-  readonly ROOT_URL = 'https://lab13.zecer.wi.zut.edu.pl/api/wm32863';
-
-  posts;
+  ROOT_URL = 'https://lab13.zecer.wi.zut.edu.pl/api/wm32863';
 
   constructor(private http: HttpClient) {}
 
@@ -29,36 +26,33 @@ export class ListService {
     this.data.tasks.push(task);
     this.taskslist.next(Object.assign({}, this.data).tasks);
     console.log(task);
+    this.post(task).subscribe((data) => {
+      //  this.task.archived = true;
+      task = data;
+      // console.log(Error);
+    });
   }
 
   public get(archived = false): Observable<Task[]> {
     return this.http.get<Task[]>(this.ROOT_URL);
   }
 
-  public post(task: Task): Observable<any> {
+  public post(task) {
     return this.http.post(this.ROOT_URL, task);
   }
 
-  public put(task: Task): Observable<any> {
-    return this.http.put(this.ROOT_URL, task);
-  }
-  getPosts(taskId) {
-    let params = new HttpParams().set('userId', taskId);
-
-    let headers = new HttpHeaders().set('Authorization', 'auth-token');
-
-    this.isLoaded.next(false);
-    //////////////////////////////
-
-    this.http
-      .get<Task[]>(this.ROOT_URL + '/tasks', { params, headers })
-      .subscribe((data) => {
-        this.posts = data;
-        this.isLoaded.next(true);
-      });
+  public put(task): Observable<any> {
+    return this.http.put(this.ROOT_URL, task.id);
   }
   public deleteTask(task: Task): Observable<any> {
-    return this.http.delete('https://lab13.zecer.wi.zut.edu.pl/api/');
+    return this.http.delete(this.ROOT_URL + task.id);
+  }
+  getTasks(taskId) {
+    let params = new HttpParams().set('id', taskId);
+
+    this.http.get<Task[]>(this.ROOT_URL, { params }).subscribe((dataa) => {
+      this.data.tasks = dataa;
+    });
   }
 
   updateList(index, checked) {
@@ -72,13 +66,13 @@ export class ListService {
     this.taskslist.next(Object.assign({}, this.data.tasks));
   }
 
-  delete(taskId: number) {
-    this.data.tasks.forEach((t, i) => {
-      if (t.id === taskId) {
-        this.data.tasks.splice(i, 1);
-      }
-    });
+  // deleteLs(taskId: number) {
+  //   this.data.tasks.forEach((t, i) => {
+  //     if (t.id === taskId) {
+  //       this.data.tasks.splice(i, 1);
+  //     }
+  //   });
 
-    this.taskslist.next(Object.assign({}, this.data).tasks);
-  }
+  //   this.taskslist.next(Object.assign({}, this.data).tasks);
+  // }
 }

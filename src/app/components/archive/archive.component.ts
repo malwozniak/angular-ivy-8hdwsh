@@ -21,7 +21,7 @@ export class ArchiveComponent implements OnInit {
     );
   }
 
-  deleteItem(todoId: number) {
-    this.service.delete(todoId);
+  deleteItem(taskId) {
+    this.service.deleteTask(taskId);
   }
 }

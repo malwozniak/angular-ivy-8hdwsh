@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Task } from '../../interface/task';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -13,7 +14,7 @@ export class ListComponent implements OnInit {
   todoForm: FormGroup;
   tasks: Observable<Task[]>;
   task: Task;
-  selected: any;
+  selected: false;
   selectedList: any = [];
   events: string[] = [];
   constructor(private service: ListService, private formBuilder: FormBuilder) {}
@@ -30,11 +31,18 @@ export class ListComponent implements OnInit {
       completed: false,
       archived: false,
     });
+   
 
     //this.todoForm.reset();
   }
-  isChecked(e) {
-    this.task.completed = e.target.checked;
+  isChecked(e: MatCheckboxChange) {
+    if (e.checked) {
+      this.service.get().subscribe((data) => {
+        // this.task = data;
+      });
+    } else {
+      console.log(Error);
+    }
   }
   onDate(event: MatDatepickerInputEvent<Date>) {
     console.log('event', event.value);
@@ -43,17 +51,12 @@ export class ListComponent implements OnInit {
     this.events.push(`${dob}`);
   }
 
-  completeTask(event: any, archived) {
-    if (event.target.checked) {
-      archived = true;
-      this.service.post(this.task).subscribe((data) => {
-        this.task = data;
-      });
-    } else {
-      console.log('unchecked');
-    }
+  completeTask(event: any, ar) {
+    this.service.get().subscribe((data) => {
+      console.log(data);
+    });
   }
-  deleteItem(taskId: number) {
-    this.service.delete(taskId);
+  deleteItem(taskId) {
+    this.service.deleteTask(taskId);
   }
 }
