@@ -50,17 +50,15 @@
         </mat-list-item>
 
         <mat-list-item class="Item_flex">
-          <input type="checkbox" (change)="completeTask($event.target, i)" />
+          <mat-checkbox (change)="isChecked()">{{
+            task.completed
+          }}</mat-checkbox>
         </mat-list-item>
       </mat-list>
-      <button
-        mat-stroked-button
-        class="button-archive"
-        (click)="archive(task.id)"
-      >
-        Archive
-        <mat-icon>archive</mat-icon>
-      </button>
     </mat-list>
+    <button mat-stroked-button class="button-archive" (click)="addItem()">
+      Archive
+      <mat-icon>archive</mat-icon>
+    </button>
   </mat-card-content>
 </mat-card>

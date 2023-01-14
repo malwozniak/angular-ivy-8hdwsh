@@ -12,6 +12,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 export class ListComponent implements OnInit {
   todoForm: FormGroup;
   tasks: Observable<Task[]>;
+  task: Task;
   selected: any;
   selectedList: any = [];
   events: string[] = [];
@@ -27,23 +28,26 @@ export class ListComponent implements OnInit {
     this.service.create({
       title: this.todoForm.controls.task.value,
       completed: false,
+      archived: false,
     });
-
-    this.todoForm.reset();
+    this.service.get(true).subscribe((data: Task[]) => {
+      this.task[1] = data;
+    });
+    //this.todoForm.reset();
   }
-
+  isChecked() {
+    this.task.completed = true;
+  }
   onDate(event: MatDatepickerInputEvent<Date>) {
-   console.log('event', event.value)
+    console.log('event', event.value);
     const stringified = JSON.stringify(event.value);
     const dob = stringified.substring(1, 11);
     this.events.push(`${dob}`);
   }
-  archive(taskId: number) {
-    this.service.sendToArchive(taskId);
-  }
-  completeTask(event: any, index) {
+
+  completeTask(event: any, archived) {
     if (event.target.checked) {
-      this.service.updateList(index, event.checked);
+      archived = true;
     } else {
       console.log('unchecked');
     }
