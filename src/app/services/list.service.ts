@@ -46,7 +46,8 @@ export class ListService {
     return this.http.put(this.ROOT_URL, task.id);
   }
   public deleteTask(task: Task): Observable<any> {
-    return this.http.delete(this.ROOT_URL + task.id);
+    console.log(this.ROOT_URL + '/' + task);
+    return this.http.delete(this.ROOT_URL + '/' + task);
   }
   getTasks(taskId) {
     let params = new HttpParams().set('id', taskId);

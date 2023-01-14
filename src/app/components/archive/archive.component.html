@@ -3,22 +3,17 @@
     <span class="main-text">Archive:</span>
 
     <mat-list *ngFor="let task of results" color="primary">
-      <ul class="item">
-        <li class="item_flex">
-          <span class="valueTodo">{{ task.title }}</span>
-        </li>
-
-        <li class="item_flex">
-          <button
-            mat-stroked-button
-            class="button-delete"
-            color="warn"
-            (click)="deleteItem(task.id)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </li>
-      </ul>
+      <mat-list-item class="item_flex">
+        <span class="valueTodo">{{ task.title }}</span>
+        <button
+          mat-stroked-button
+          class="button-delete"
+          color="warn"
+          (click)="deleteItem(task.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>
