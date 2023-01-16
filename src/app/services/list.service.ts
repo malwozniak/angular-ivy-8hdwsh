@@ -68,13 +68,13 @@ export class ListService {
     this.taskslist.next(Object.assign({}, this.data.tasks));
   }
 
-  // deleteLs(taskId: number) {
-  //   this.data.tasks.forEach((t, i) => {
-  //     if (t.id === taskId) {
-  //       this.data.tasks.splice(i, 1);
-  //     }
-  //   });
+  deleteLs(taskId: number) {
+    this.data.tasks.forEach((t, i) => {
+      if (t.id === taskId) {
+        this.data.tasks.splice(i, 1);
+      }
+    });
 
-  //   this.taskslist.next(Object.assign({}, this.data).tasks);
-  // }
+    this.taskslist.next(Object.assign({}, this.data).tasks);
+  }
 }

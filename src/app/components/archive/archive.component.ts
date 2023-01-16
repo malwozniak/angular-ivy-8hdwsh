@@ -13,7 +13,6 @@ export class ArchiveComponent implements OnInit {
   tasks: Observable<Task[]>;
 
   public results;
-  @Input() taska: any[];
   ngOnInit() {
     this.service.get().subscribe(
       (response: any) => (this.results = response),
@@ -23,6 +22,9 @@ export class ArchiveComponent implements OnInit {
 
   deleteItem(taskId) {
     console.log(taskId);
-    this.service.deleteTask(taskId);
+    this.service.deleteTask(taskId).subscribe(() => {
+      this.service.deleteLs(taskId);
+      console.log('user deleted');
+    });
   }
 }
